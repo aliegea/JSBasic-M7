@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <link rel="stylesheet" href="styles.css">
+  
+    
+    <link rel="preconnect" href="https://fonts.gstatic.com"> 
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+<script>
+    window.onload = function(){
+document.getElementById("display").value=0;
+}
+
+var cifra="";
+var op_acum=0;
+var primera_operacion=true;
+var sumar=false;
+var restar=false;
+var mult=false;
+var divi=false;
+  
+    function writeNum(numero){
+        document.getElementById("display").value=cifra+numero;
+        cifra=document.getElementById("display").value;
+    }
+    function suma() {
+        if (restar==true){
+            op_acum=op_acum-parseFloat(cifra);
+            document.getElementById("display").value=op_acum;
+        }
+        else{
+            op_acum=op_acum+parseFloat(cifra);
+             document.getElementById("display").value=op_acum;
+        }
+        
+        cifra="";
+        restar==false;
+        sumar=true;
+        mult=false;
+        divi=false;
+        primera_operacion=false;
+        
+    }
+    function resta() {
+        if (primera_operacion==true){
+            op_acum=parseFloat(cifra);
+            primera_operacion=false;
+        }
+        else{
+
+        
+            if (sumar==true){
+            op_acum=op_acum+parseFloat(cifra);
+            document.getElementById("display").value=op_acum;
+            }
+            else{
+            op_acum=op_acum-parseFloat(cifra);
+                document.getElementById("display").value=op_acum;
+            }
+            }
+            cifra="";
+            sumar=false;
+            restar=true;
+            mult=false;
+            divi=false;
+    
+    }
+    function multi(){
+        if (primera_operacion==true){
+            op_acum=parseFloat(cifra);
+            primera_operacion=false;
+        }
+        else{
+
+        
+            if (sumar==true){
+            op_acum=op_acum+parseFloat(cifra);
+            document.getElementById("display").value=op_acum;
+            }
+            else{
+            op_acum=op_acum-parseFloat(cifra);
+                document.getElementById("display").value=op_acum;
+            }
+            }
+            
+        
+        cifra="";
+        restar==false;
+        sumar=false;
+        mult=true;
+        divi=false;
+    }
+    function divis(){
+        if (primera_operacion==true){
+            op_acum=parseFloat(cifra);
+            primera_operacion=false;
+        }
+        else{
+
+        
+            if (sumar==true){
+            op_acum=op_acum+parseFloat(cifra);
+            document.getElementById("display").value=op_acum;
+            }
+            else{
+            op_acum=op_acum-parseFloat(cifra);
+                document.getElementById("display").value=op_acum;
+            }
+            }
+            
+        
+        cifra="";
+        restar==false;
+        sumar=false;
+        mult=false;
+        divi=true;
+    }
+    function porcentage(){
+        document.getElementById("display").value=("¿?");
+    }
+    function neg(){
+        document.getElementById("display").value=("¿?");
+    }
+    
+    
+    function resultado(){
+        if (sumar==true){
+            document.getElementById("display").value=op_acum+parseFloat(cifra);  
+        }
+        else if (restar==true){
+            document.getElementById("display").value=op_acum-parseFloat(cifra); 
+        }
+        else if (mult==true){
+            document.getElementById("display").value=op_acum*parseFloat(cifra); 
+        }
+        else if (divi==true){
+            document.getElementById("display").value=op_acum/parseFloat(cifra); 
+        }
+
+        op_acum=parseFloat(document.getElementById("display").value);
+        cifra=0;
+    }
+    
+
+
+       
+   
+</script>
+</head>
+<body>
+    <div class= caja>
+        <div class="pantalla">
+           <input name="valor" type="text" class="valor"  id="display"> </input>  
+        </div>
+        <div class="row numeros">
+            <button class="top"  value="Actualizar" onclick="location.reload()">DEL</button>
+            <button class="top" " onclick="neg()">+/-</button>
+            <button class="top" onclick="porcentage()">%</button>
+            <button class="symbol" onclick="divis()">÷</button>
+        </div>
+        <div class="row numeros">
+            <button id="siete" onclick="writeNum(7)">7</button>
+            <button id="ocho" onclick="writeNum(8)">8</button>
+            <button id="nueve" onclick="writeNum(9)">9</button>
+            <button class="symbol" onclick="multi()">x</button>
+        </div>   
+        <div class="row numeros">
+            <button id="cuatro" onclick="writeNum(4)">4</button>
+            <button id="cinco" onclick="writeNum(5)">5</button>
+            <button id="seis" onclick="writeNum(6)">6</button>
+            <button class="symbol" onclick="resta()">-</button>
+        </div> 
+        <div class="row numeros">
+        <button id="uno" onclick="writeNum(1)">1</button>
+        <button id="dos" onclick="writeNum(2)">2</button>
+        <button id="tres" onclick="writeNum(3)">3</button>
+        <button class="symbol" onclick="suma()">+</button>
+        </div> 
+         <div class="row lastnumeros">
+             <div class="cero">
+                 <button class="zero" id="cero" onclick="writeNum(0)">0</button>
+            </div>
+            <div class="lastSimbols">
+               <div> <button onclick="writeNum('.')">,</button></div>
+               <div> <button class="symbolCorner" onclick="resultado()">=</button></div>
+          </div>
+        </div> 
+            
+    </div>
+  
+</body>
+</html>

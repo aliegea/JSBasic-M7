@@ -1,0 +1,124 @@
+body{
+background-image:url("images/mesa.png");
+text-align: center;
+
+}
+.caja{
+    margin: auto;
+    margin-top: 200px;
+    padding:1px;
+    width: 240px;
+    height:330px;
+    border:1px solid rgb(19, 19, 19);
+    border-radius: 20px;
+    background-color: #4F4F51;
+    display:flex;
+    flex-flow: column nowrap;
+}
+.pantalla{
+    background-color:rgb(29, 28, 28);
+    border-radius: 20px  20px 0 0;
+    width: 100%;
+    height:80px;
+    display:flex;
+    flex-flow:column nowrap;
+   justify-content:flex-end ;
+}
+.valor{
+    background-color:rgb(29, 28, 28);
+    color:#E7EAEC;
+    font-size:2.7em;
+    text-align: right;
+    padding-right: 8px;
+    font-family:'Nanum Gothic', sans-serif;
+    border-right: 0;
+   
+}
+.numeros{
+display:flex;
+height:50px;
+justify-content: space-evenly;   
+flex-grow:1;
+
+}
+
+.lastnumeros{
+    display:flex;
+    height:50px;
+    flex-grow: 1;
+   justify-content: space-evenly;   
+
+}
+
+.lastnumeros{
+    display:flex;
+    height:50px;
+    
+   justify-content: space-evenly;   
+   
+
+}
+.cero{
+    display:flex;
+    width:100%;
+    border-radius: 0 0 0 20px;
+    flex-grow:2;
+    outline: none;
+    
+}
+.cero:hover{
+    opacity: 0.8;
+}
+
+
+.zero{
+    width:100%;
+    border-radius: 0 0 0 20px;
+    
+}
+button{
+    width:60px;
+    height:100%;
+    color:#E7EAEC;
+    font-size: 1.7em;
+    background-color:#60747F ;
+    border:0.5px solid #4F4F51;
+    outline: none;
+   
+}
+button:hover{
+    opacity: 0.8;
+}
+
+
+.lastSimbols{
+    display:flex;
+    flex-flow: row nowrap;
+    flex-grow: 1;
+    justify-content: space-evenly    
+   
+}
+.symbol{
+    background-color: #F49E31;
+    font-size: 1.7em;
+    color:#E7EAEC;
+    outline: none;
+}
+.symbol:hover{
+    opacity: 0.8;
+}
+.symbolCorner{
+    background-color: #F49E31;
+    font-size: 1.7em;
+    color:#E7EAEC;
+    border-radius: 0  0 20px 0;
+}
+.symbolCorner:hover{
+    opacity: 0.8;
+    outline: none;
+}
+.top{
+    background-color:#5D5E61;
+    font-size: 1.5em;
+    color:#E7EAEC;
+}

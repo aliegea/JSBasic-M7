@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Script basic</title>
+    <script>
+        // Exercici 1:
+        var saludo=("Hola Mundo!");
+        console.log (saludo);
+         // Exercici 2:
+        var nombre = ("Ali");
+        alert ("¡Me llamo "+ nombre + "!");
+        //Exercici 3:
+        var nombre= ("Ali");
+        var apellido= ("Egea");
+        console.log (nombre +" "+ apellido);
+        //Exercici 4:
+        var numero=(34)
+        var number=(56)
+        var suma=(numero+number);
+        console.log ("La suma entre " + numero + " y "+ number + " es " + suma);
+        // Exercici 5
+        var aprobado=5;
+        var nota_examen=4.6;
+        if(nota_examen>=aprobado){
+            alert("¡Enhorabuena has aprobado el examen con un " + nota_examen + "!");
+        }
+        else{
+            alert("¡oooh has suspendido el examen con un " + nota_examen + "!");
+        }
+        </script>
+
+       <!--  Exercici 6 -->
+       <H1 id="cotxe">
+        Tinc un cotxe de color <strong>verd</strong>
+       </H1>
+       <p>Clica aquí per canviar el color del cotxe:</p>
+       
+       <button onclick="colores()">color</button>
+       
+       <p>Clica aquí per canviar les os per us:</p>
+       
+       <button onclick="vocals()">vocals</button>
+       <script>
+        
+        function colores() {
+            var frase=document.getElementById("cotxe").innerHTML;
+            var canvi=frase.replace("verd","blau");
+            document.getElementById("cotxe").innerHTML=canvi;
+        }
+        function vocals() {
+            var frase=document.getElementById("cotxe").innerHTML;
+            var canvi2=frase.replace(/o/g, "u");
+            document.getElementById("cotxe").innerHTML=canvi2;
+        }
+        </script>
+        <script>
+      
+       //  Exercici 7
+    
+      var objectes=["taula","cadira","ordinador","llibreta"];
+        for(i=0;i<objectes.length;i++){
+            console.log("L'objecte "+ objectes[i]+ " es troba en la posició número " + i);
+        }
+    </script>
+
+    <!-- Exercici 8 -->
+    <script>
+        
+        function calculadora(operador,n1,n2) {
+    if (operador == undefined) {
+        var result= "opereción desconocida"
+    } 
+    else {
+        if (operador == "suma") {
+            var result= n1+n2
+        } 
+        else if (operador == "resta") {
+            var result= n1-n2
+        } 
+        else if (operador == "multi") {
+            var result= n1*n2
+        } 
+        else if (operador == "divi") {
+            
+            if(n2!==0){
+            var result= n1/n2
+            }
+            else{
+            var result="infinit";
+            }
+    }
+        var resultado=("El resultat és " + result)
+        document.getElementById("texto").innerHTML=resultado;
+    } 
+}
+       
+
+    </script>
+    <h3>Exercici 8: Calculadora</h3>
+    <button  onclick="calculadora('divi',40,0)">Resultat</button>
+    <h3 id="texto"></h3>
+    
+  
+   
+</head>
+<body>
+   
+    
+</body>
+</html>

@@ -14,136 +14,61 @@
 document.getElementById("display").value=0;
 }
 
+            
 var cifra="";
-var op_acum=0;
-var primera_operacion=true;
-var sumar=false;
-var restar=false;
-var mult=false;
-var divi=false;
-  
-    function writeNum(numero){
-        document.getElementById("display").value=cifra+numero;
-        cifra=document.getElementById("display").value;
-    }
-    function suma() {
-        if (restar==true){
-            op_acum=op_acum-parseFloat(cifra);
-            document.getElementById("display").value=op_acum;
+var op_acum = 0;
+var operacion = "primera_operacion";
+    
+function writeNum(numero){
+    
+        document.getElementById("display").value = cifra + numero;
+        cifra = document.getElementById("display").value;
+}
+
+function operar(op){
+        switch(operacion){
+            case "primera_operacion":
+                op_acum = parseFloat(cifra);
+                break;
+            case "sumar":
+                 op_acum += parseFloat(cifra);
+                break;
+            case "restar":
+                op_acum -= parseFloat(cifra);
+                break;
+            case "mult":
+                op_acum *= parseFloat(cifra);
+                break;
+            case "divi":
+                 op_acum /= parseFloat(cifra);
+                break;
+           
         }
-        else{
-            op_acum=op_acum+parseFloat(cifra);
-             document.getElementById("display").value=op_acum;
-        }
-        
+        document.getElementById("display").value = op_acum;
+        operacion = op;
         cifra="";
-        restar==false;
-        sumar=true;
-        mult=false;
-        divi=false;
-        primera_operacion=false;
-        
-    }
-    function resta() {
-        if (primera_operacion==true){
-            op_acum=parseFloat(cifra);
-            primera_operacion=false;
-        }
-        else{
+}
 
+function resultado(){
+        switch(operacion){
+            case "sumar":
+                document.getElementById("display").value = op_acum+parseFloat(cifra);
+                break;
+            case "restar":
+                document.getElementById("display").value = op_acum-parseFloat(cifra);
+                break;
+            case "mult":
+                document.getElementById("display").value = op_acum*parseFloat(cifra);
+                break;
+            case "divi":
+                document.getElementById("display").value = op_acum/parseFloat(cifra);
+                break;
+          
+        cifra = "";
+        op_acum = parseFloat(document.getElementById("display").value);
         
-            if (sumar==true){
-            op_acum=op_acum+parseFloat(cifra);
-            document.getElementById("display").value=op_acum;
-            }
-            else{
-            op_acum=op_acum-parseFloat(cifra);
-                document.getElementById("display").value=op_acum;
-            }
-            }
-            cifra="";
-            sumar=false;
-            restar=true;
-            mult=false;
-            divi=false;
-    
-    }
-    function multi(){
-        if (primera_operacion==true){
-            op_acum=parseFloat(cifra);
-            primera_operacion=false;
-        }
-        else{
-
-        
-            if (sumar==true){
-            op_acum=op_acum+parseFloat(cifra);
-            document.getElementById("display").value=op_acum;
-            }
-            else{
-            op_acum=op_acum-parseFloat(cifra);
-                document.getElementById("display").value=op_acum;
-            }
-            }
-            
-        
-        cifra="";
-        restar==false;
-        sumar=false;
-        mult=true;
-        divi=false;
-    }
-    function divis(){
-        if (primera_operacion==true){
-            op_acum=parseFloat(cifra);
-            primera_operacion=false;
-        }
-        else{
-
-        
-            if (sumar==true){
-            op_acum=op_acum+parseFloat(cifra);
-            document.getElementById("display").value=op_acum;
-            }
-            else{
-            op_acum=op_acum-parseFloat(cifra);
-                document.getElementById("display").value=op_acum;
-            }
-            }
-            
-        
-        cifra="";
-        restar==false;
-        sumar=false;
-        mult=false;
-        divi=true;
-    }
-    function porcentage(){
-        document.getElementById("display").value=("¿?");
-    }
-    function neg(){
-        document.getElementById("display").value=("¿?");
-    }
-    
-    
-    function resultado(){
-        if (sumar==true){
-            document.getElementById("display").value=op_acum+parseFloat(cifra);  
-        }
-        else if (restar==true){
-            document.getElementById("display").value=op_acum-parseFloat(cifra); 
-        }
-        else if (mult==true){
-            document.getElementById("display").value=op_acum*parseFloat(cifra); 
-        }
-        else if (divi==true){
-            document.getElementById("display").value=op_acum/parseFloat(cifra); 
-        }
-
-        op_acum=parseFloat(document.getElementById("display").value);
-        cifra=0;
-    }
-    
+}
+}
 
 
        
@@ -159,25 +84,25 @@ var divi=false;
             <button class="top"  value="Actualizar" onclick="location.reload()">DEL</button>
             <button class="top" " onclick="neg()">+/-</button>
             <button class="top" onclick="porcentage()">%</button>
-            <button class="symbol" onclick="divis()">÷</button>
+            <button class="symbol" onclick="operar('divi')">÷</button>
         </div>
         <div class="row numeros">
             <button id="siete" onclick="writeNum(7)">7</button>
             <button id="ocho" onclick="writeNum(8)">8</button>
             <button id="nueve" onclick="writeNum(9)">9</button>
-            <button class="symbol" onclick="multi()">x</button>
+            <button class="symbol" onclick="operar('mult')"multi()">x</button>
         </div>   
         <div class="row numeros">
             <button id="cuatro" onclick="writeNum(4)">4</button>
             <button id="cinco" onclick="writeNum(5)">5</button>
             <button id="seis" onclick="writeNum(6)">6</button>
-            <button class="symbol" onclick="resta()">-</button>
+            <button class="symbol" onclick="operar('restar')">-</button>
         </div> 
         <div class="row numeros">
         <button id="uno" onclick="writeNum(1)">1</button>
         <button id="dos" onclick="writeNum(2)">2</button>
         <button id="tres" onclick="writeNum(3)">3</button>
-        <button class="symbol" onclick="suma()">+</button>
+        <button class="symbol" onclick="operar('sumar')">+</button>
         </div> 
          <div class="row lastnumeros">
              <div class="cero">
